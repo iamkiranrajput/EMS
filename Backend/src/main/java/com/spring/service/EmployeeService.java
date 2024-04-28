@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.spring.entity.Employee;
 import com.spring.repository.EmployeeRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 
 @Service
 
@@ -26,6 +28,13 @@ public class EmployeeService {
 			
 			return employeeRepository.findAll();
 						
+		}
+		
+		public void deleteEmployee(Long id) {
+			if(!employeeRepository.existsById(id)) {
+				throw new EntityNotFoundException("Employee with id "+id+" not found");
+			}
+			employeeRepository.deleteById(id);
 		}
 		
 		

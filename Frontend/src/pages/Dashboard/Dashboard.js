@@ -10,15 +10,32 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
-                const response = await fetch("http://localhost:8184/api/employees");
+                const response = await fetch("http://localhost:8188/api/employees");
                 const data = await response.json();
                 setEmployees(data);
             } catch (err) {
-                console.log(err);
+                console.error(err.message);
             }
         }
         fetchEmployees();
-    })
+    }, []);
+
+
+    const handleDelete = async (employeeId) => {
+        try {
+            const response = await fetch(`http://localhost:8188/api/employee/${employeeId}`, {
+                method: "Delete",
+            });
+
+            if (response.ok) {
+                setEmployees((prevEmployee) => (prevEmployee.filter((employee) => employee.id !== employeeId)))
+            }
+
+            console.log(`Employee with id ${employeeId} deleted successfully`);
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
 
     return (
         <>
@@ -48,7 +65,7 @@ const Dashboard = () => {
                                             <td>{employee.department}</td>
                                             <td>
                                                 <Button variant="outline-secondary">Update</Button>
-                                                <Button className="ms-2" variant="outline-danger">Delete</Button>
+                                                <Button className="ms-2" variant="outline-danger" onClick={() => handleDelete(employee.id)}>Delete</Button>
 
                                             </td>
                                         </tr>
