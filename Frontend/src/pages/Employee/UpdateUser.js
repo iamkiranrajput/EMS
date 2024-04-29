@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-
+import { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './PostUser.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const PostUser = () => {
+const UpdateUser = () => {
+    const navigate = useNavigate();
+    const { id } = useParams();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         phone: "",
         department: ""
     });
-
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -22,33 +22,47 @@ const PostUser = () => {
         })
     }
 
-
-
-    const navigate = useNavigate();
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formData);
-
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await fetch("http://localhost:8888/api/employee", {
-                method: "post",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData)
+            const response = await fetch(`http://localhost:8888/api/employee/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
             });
+
             const data = await response.json();
-            console.log("Employee Created : ", data);
+            console.log(data);
             navigate("/");
+        } catch (err) {
+            console.log(err.message);
         }
-        catch (err) {
-            console.log(err);
-        }
+
     }
+
+
+    useEffect(() => {
+        const fetchEmployees = async () => {
+            try {
+                const response = await fetch(`http://localhost:8888/api/employee/${id}`);
+                const data = await response.json();
+                setFormData(data);
+                console.log(data);
+            } catch (err) {
+                console.log(err.message);
+            }
+        }
+        fetchEmployees();
+    }, [id])
+
 
 
 
     return (
         <>
-            <h1 className='text-center'>Register New Employee</h1>
+            <h1 className='text-center'>Update Employee</h1>
 
             <div className=' d-flex justify-content-center'>
                 <form className='border border-2 p-3 d-flex flex-column w-50' onSubmit={handleSubmit} >
@@ -68,11 +82,13 @@ const PostUser = () => {
                         <Form.Control type='text' name='department' placeholder='Enter Department' value={formData.department} onChange={handleInputChange} ></Form.Control>
                     </Form.Group>
 
-                    <Button varient="primary" type="submit" className="w-100">submit</Button>
+                    <Button varient="primary" type="submit" className="w-100">Edit Employee</Button>
                 </form>
             </div>
 
         </>
     )
+
+
 }
-export default PostUser;
+export default UpdateUser;

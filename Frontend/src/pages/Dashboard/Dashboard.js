@@ -4,13 +4,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/esm/Button";
 import Table from "react-bootstrap/Table";
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
     const [employees, setEmployees] = useState([]);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
-                const response = await fetch("http://localhost:8188/api/employees");
+                const response = await fetch("http://localhost:8888/api/employees/");
                 const data = await response.json();
                 setEmployees(data);
             } catch (err) {
@@ -20,23 +23,24 @@ const Dashboard = () => {
         fetchEmployees();
     }, []);
 
-
     const handleDelete = async (employeeId) => {
         try {
-            const response = await fetch(`http://localhost:8188/api/employee/${employeeId}`, {
+            const response = await fetch(`http://localhost:8888/api/employee/${employeeId}`, {
                 method: "Delete",
             });
-
             if (response.ok) {
                 setEmployees((prevEmployee) => (prevEmployee.filter((employee) => employee.id !== employeeId)))
             }
-
             console.log(`Employee with id ${employeeId} deleted successfully`);
         } catch (err) {
             console.error(err.message);
         }
     }
 
+
+    const handleUpdate = (employeeId) => {
+        navigate(`/employee/${employeeId}`);
+    }
     return (
         <>
             <Container className="mt-5">
@@ -64,7 +68,7 @@ const Dashboard = () => {
                                             <td>{employee.phone}</td>
                                             <td>{employee.department}</td>
                                             <td>
-                                                <Button variant="outline-secondary">Update</Button>
+                                                <Button variant="outline-secondary" onClick={() => handleUpdate(employee.id)}>Update</Button>
                                                 <Button className="ms-2" variant="outline-danger" onClick={() => handleDelete(employee.id)}>Delete</Button>
 
                                             </td>
