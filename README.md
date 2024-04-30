@@ -24,43 +24,29 @@ This project is an Employee Management System built with React.js for the fronte
 ### Installation
 
 1. Clone the repository:
-```
 git clone https://github.com/your-username/employee-management-system.git
-```
 
 3. Navigate to the project directory:
-```
 cd employee-management-system
-```
 
 4. Install frontend dependencies:
-```
 cd frontend
 npm install
-```
 
 5. Install backend dependencies:
-```
 cd ../backend
-```
+
 
 6. Build and run the backend server:
-```
 ./mvnw spring-boot:run
-```
 
 7. Run the frontend development server:
-```
 npm start
-```
 
 8. Access the application in your browser:
-```
 http://localhost:3000
-```
 
 ## Contributing
-
 Contributions are welcome! If you find any bugs or have suggestions for improvement, please open an issue or submit a pull request.
 
 ## Acknowledgements
