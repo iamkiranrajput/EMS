@@ -24,7 +24,7 @@ This project is an Employee Management System built with React.js for the fronte
 ### Installation
 
 1. Clone the repository:
-git clone https://github.com/your-username/employee-management-system.git
+git clone https://github.com/iamkiranrajput/employee-management-system.git
 
 3. Navigate to the project directory:
 cd employee-management-system
