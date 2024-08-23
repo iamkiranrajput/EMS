@@ -20,11 +20,10 @@ public class EmployeeService {
 		private EmployeeRepository employeeRepository;
 		
 		public Employee postEmployee(Employee employee) {
-
 			return employeeRepository.save(employee);
 		}
+		
 		public List<Employee> getAllEmployees(){
-			
 			return employeeRepository.findAll();
 						
 		}
@@ -37,7 +36,6 @@ public class EmployeeService {
 		
 		
 		public Employee getEmployeeById(Long id) {
-			
 			return employeeRepository.findById(id).orElse(null);
 		}
 		

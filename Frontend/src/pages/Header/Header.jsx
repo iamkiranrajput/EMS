@@ -4,8 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import './Header.css';
 import { Link } from 'react-router-dom';
 
-const Header =()=>{
-    return(
+const Header = () => {
+    return (
         <>
             <Navbar bg="primary" varient="dark">
                 <Container>
