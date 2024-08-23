@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './PostUser.css';
 import { useNavigate } from "react-router-dom";
+import Navigation from '../Navigation';
 
 const PostUser = () => {
     const [formData, setFormData] = useState({
@@ -48,30 +49,30 @@ const PostUser = () => {
 
     return (
         <>
-            <h1 className='text-center'>Register New Employee</h1>
-
-            <div className=' d-flex justify-content-center'>
-                <form className='border border-2 p-3 d-flex flex-column w-50' onSubmit={handleSubmit} >
-                    <Form.Group controlId='FormBasicName ' className='pb-2'>
+            <div className='flex'>
+                <Navigation />
+                <form className='w-full p-3 d-flex flex-column justify-center items-center ' onSubmit={handleSubmit} >
+                    <Form.Group controlId='FormBasicName ' className='pb-2 w-50'>
                         <Form.Control type='text' name='name' placeholder='Enter name' value={formData.name} onChange={handleInputChange} ></Form.Control>
                     </Form.Group>
 
-                    <Form.Group controlId='FormBasicName' className='pb-2'>
+                    <Form.Group controlId='FormBasicName' className='pb-2 w-50'>
                         <Form.Control type='email' name='email' placeholder='Enter email' value={formData.email} onChange={handleInputChange} ></Form.Control>
                     </Form.Group>
 
-                    <Form.Group controlId='FormBasicName' className='pb-2'>
+                    <Form.Group controlId='FormBasicName' className='pb-2 w-50'>
                         <Form.Control type='number' name='phone' placeholder='Enter phone' value={formData.phone} onChange={handleInputChange} ></Form.Control>
                     </Form.Group>
 
-                    <Form.Group controlId='FormBasicName' className='pb-2'>
+                    <Form.Group controlId='FormBasicName' className='pb-2 w-50'>
                         <Form.Control type='text' name='department' placeholder='Enter Department' value={formData.department} onChange={handleInputChange} ></Form.Control>
                     </Form.Group>
 
-                    <Button varient="primary" type="submit" className="w-100">submit</Button>
-                </form>
-            </div>
+                    <Button varient="primary" type="submit" className="w-50">submit</Button>
 
+                </form>
+
+            </div>
         </>
     )
 }
