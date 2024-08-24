@@ -68,7 +68,8 @@ const PostUser = () => {
                         <Form.Control type='text' name='department' placeholder='Enter Department' value={formData.department} onChange={handleInputChange} ></Form.Control>
                     </Form.Group>
 
-                    <Button varient="primary" type="submit" className="w-50">submit</Button>
+                    <button type="submit" className="w-50 bg-gray-800 text-white p-2 rounded-lg font-semibold ">Add Employee </button>
+
 
                 </form>
 

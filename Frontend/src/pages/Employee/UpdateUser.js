@@ -82,7 +82,8 @@ const UpdateUser = () => {
                     <Form.Control type='text' name='department' placeholder='Enter Department' value={formData.department} onChange={handleInputChange} ></Form.Control>
                 </Form.Group>
 
-                <Button varient="primary" type="submit" className="w-50">Edit Employee</Button>
+                <button type="submit" className="w-50 bg-gray-800 text-white p-2 rounded-lg font-semibold ">Update Employee </button>
+
             </form>
 
         </>

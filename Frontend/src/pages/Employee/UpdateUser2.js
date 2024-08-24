@@ -75,7 +75,7 @@ const UpdateUser2 = () => {
                 <Form.Group controlId='FormBasicName ' className='pb-2 w-50'>
                     <Form.Control type='number' name='id2' placeholder='Enter ID' value={id2} onChange={(e) => setId2(e.target.value)} ></Form.Control>
                 </Form.Group>
-                <Button varient="primary" type="submit" className="w-50">Submit Employee ID</Button>
+                <button type="submit" className="w-50 bg-gray-800 text-white p-2 rounded-lg font-semibold ">Submit Employee ID </button>
 
 
             </form>
