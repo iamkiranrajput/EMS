@@ -1,6 +1,6 @@
 # Employee Management System
 
-This project is an Employee Management System built with React.js for the frontend and Spring Boot with Data JPA & Lombok for the backend. It provides a comprehensive solution for managing employee information efficiently.
+This project is an Employee Management System built with React.js for the frontend and Spring Boot with Data JPA for the backend. It provides a comprehensive solution for managing employee information efficiently.
 
 ## Features
 
